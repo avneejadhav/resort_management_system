@@ -1,0 +1,31 @@
+{% extends 'videos/base.html' %}
+{% block content %} 
+ <div class="container"  style="box-shadow: 10px 10px 5px grey;padding: 30px;">
+      <div class="row">
+        <div class="col-md-6 m-auto">
+  <h1 class="text-center mb-3">Review Time</h1>
+  {% if latest_question_list %}
+    {% for question in latest_question_list %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <p class="lead">{{ question.question_text }}</p>
+          {% if user.is_authenticated %}
+         <a href="{% url 'reviews:detail' question.id %}" class="btn btn-dark btn-sm">Vote Now</a>
+          {% else %}
+        <a class="btn btn-dark btn-sm" href="{% url 'login' %}?next={{request.path}}">Log in to pin your Review!</a>
+        {% endif %}
+          
+          <a href="{% url 'reviews:results' question.id %}" class="btn btn-secondary btn-sm">Reviews of people</a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    {% endfor %}
+  {% else %}
+    <p>No polls available</p>
+  {% endif %}
+{% endblock %}

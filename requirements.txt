@@ -1,0 +1,16 @@
+asgiref==3.2.10
+dj-database-url==0.5.0
+Django==3.0.5
+django-ckeditor==6.0.0
+django-crispy-forms==1.9.2
+django-js-asset==1.2.2
+environ==1.0
+Pillow==7.2.0
+postgres==3.0.0
+psycopg2-binary==2.8.6
+psycopg2-pool==1.1
+python-http-client==3.3.1
+pytz==2020.1
+sendgrid==6.4.7
+sqlparse==0.4.0
+starkbank-ecdsa==1.1.0

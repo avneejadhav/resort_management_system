@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <style >
+      .bg{
+        background:#263238! important;
+      }
+    </style>
+</head>
+<body>
+ <nav class="navbar navbar-expand-lg bg navbar-dark ">
+  <a class="navbar-brand" href="#">Green Leaves</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+     
+         <li class="nav-item">
+        <a class="nav-link" href="{% url 'video' %}">Video_wall</a>
+        </li>
+      
+
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'blog' %}">Blogs</a>
+        </li>
+
+        {% if user.is_authenticated %}
+
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Hotels
+        </a>
+       
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'hotel:RoomListView' %}">Rooms</a>
+          <a class="dropdown-item" href="{% url 'hotel:BookingListView' %}">Booked rooms</a>
+         
+        </div>
+    
+      </li>
+
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Restaurant
+       </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'core:item_list' %}">Food Court</a>
+          <a class="dropdown-item" href="{% url 'core:order_summary' %}">My Meal Cart</a>
+         
+        </div>
+      
+      </li>
+
+       <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+        </li>
+
+      <li class="nav-item">
+            <a class="nav-link" href="reviews">Reviews</a>
+      </li>
+      <li class="nav-item">
+            <a class="nav-link" href="{% url 'gallery' %}">Gallery Grid</a>
+      </li>
+       
+      <li class="nav-item">
+        <a class="nav-link " href="logout">Logout</a>
+      </li>
+       <li>Hello, {{user.first_name}}</li>
+      {% else %} 
+
+      <li class="nav-item">
+        <a class="nav-link " href="register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="login">Login</a>
+      </li>
+      
+      
+      {% endif %}
+
+    </ul>
+  </div>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+
+</body>
+</html>
+
+ 

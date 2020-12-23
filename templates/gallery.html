@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Resort</title>
+    <style >
+      .bg{
+        background:#0097a7! important;
+      }
+      .list-group-item-active{
+         background:#0097a7! important;
+         border-color: #0097a7! important;
+       }
+
+      .card-columns {
+          @include media-breakpoint-only(lg) {
+          column-count: 4;
+          }
+          @include media-breakpoint-only(xl) {
+          column-count: 5;
+         }
+        }  
+        
+
+      
+    </style>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <h1><i>Gallery Wall</i></h1>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script>
+      function showModelwithImage(imageUrl)
+      {
+        $('#image-model').modal('show')
+        $("#image-show").attr('src',`/media/${imageUrl}`)
+
+      }
+    </script>
+ <div class="container" style="box-shadow: 10px 10px 5px grey;">
+
+  <div class="row">
+    
+    <div class="col-md-2">
+      <!-- categories -->
+      <div class="list-group mt-3">
+  <a href="/gallery" class="list-group-item list-group-item-action active">
+    All Images
+  </a>
+  {% for c in cats %}
+  <a href="/category/{{c.pk}}" class="list-group-item list-group-item-action">{{ c.title }}</a>
+  {% endfor %}
+</div>
+
+
+    </div>
+
+
+    <div class="col-md-10">
+     <!--  images -->
+     <div class="row md-3">
+       
+       <div class="col-md-12">
+
+          <div class="card-columns">
+            {% for i in images %}
+            
+            <div class="card" >
+            <img class="card-img-top" src="/media/{{i.image}}" alt="Card image cap">
+            <div class="card-body">
+            <h5 class="card-title">{{i.title}}</h5>
+            <p class="card-text">{{i.description}}</p>
+            <a href="#" class="btn btn-primary" onclick="showModelwithImage('{{i.image}}')">View</a>
+  </div>
+</div>
+{% endfor %}
+
+
+
+          </div>
+         
+         </div>
+      </div>
+
+     </div>
+
+
+
+
+  </div>
+</div>
+
+
+ 
+
+
+<!-- Modal -->
+<div class="modal fade" id="image-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">My Image</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="#!" id="image-show" class="img-fluid" alt="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+    </div>
+  </div>
+</div>
+</div>
+   </body>
+</html>
